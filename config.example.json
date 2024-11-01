@@ -1,0 +1,45 @@
+{
+    "discord_token": "",
+    "hypixel_api_key": "",
+    "guild_id": 0,
+    "hypixel_api_wins_key": "",
+    "error_gif": "https://cdn.discordapp.com/attachments/1036738622361190520/1219728234804150422/tutorial.gif",
+    "role_ids": {
+        "verified": 0,
+        "ASCENDED": 0,
+        "DIVINE": 0,
+        "CELESTIAL": 0,
+        "Godlike": 0,
+        "Grandmaster": 0,
+        "Legend": 0,
+        "Master": 0,
+        "Diamond": 0,
+        "Gold": 0,
+        "Iron": 0,
+        "Rookie": 0
+    },
+    "colors": {
+        "red": 14171198,
+        "discordGray": 3092790,
+        "green": 2981190
+    },
+    "emojis": {
+        "tick": ":white_check_mark:",
+        "cross": ":x:",
+        "add": ":heavy_plus_sign:",
+        "minus": ":heavy_minus_sign:"
+    },
+    "roles_wins": [
+        [100000, "ASCENDED"],
+        [50000, "DIVINE"],
+        [25000, "CELESTIAL"],
+        [10000, "Godlike"],
+        [5000, "Grandmaster"],
+        [2000, "Legend"],
+        [1000, "Master"],
+        [500, "Diamond"],
+        [250, "Gold"],
+        [100, "Iron"],
+        [50, "Rookie"]
+    ]
+}

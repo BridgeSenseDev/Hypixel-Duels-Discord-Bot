@@ -1,0 +1,10 @@
+[project]
+name = "hypixel-duels-discord-bot"
+version = "0.1.0"
+description = "Discord bot for verifying and auto updating duels roles."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "discord-py>=2.4.0",
+    "requests>=2.32.3",
+]
