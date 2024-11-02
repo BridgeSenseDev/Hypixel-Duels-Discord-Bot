@@ -72,6 +72,10 @@ tree = app_commands.CommandTree(client)
 async def manage_role(member, role_id, action):
     guild = client.get_guild(config["guild_id"])
     role = discord.utils.get(guild.roles, id=role_id)
+
+    if not role:
+        return ""
+
     if (action == "add" and role not in member.roles) or (
         action == "remove" and role in member.roles
     ):
@@ -126,13 +130,8 @@ async def update_members():
     except discord.NotFound:
         print(f"Discord member ID {member_id} not found, removing from DB")
     except discord.DiscordException as e:
-        print(f"Error fetching member {member_id}: {e}")
+        print(f"Error fetching member {member_id}, skipping: {e}")
 
-        conn = sqlite3.connect("members.db")
-        cur = conn.cursor()
-        cur.execute("DELETE FROM members WHERE discord = ?", (member_id,))
-        conn.commit()
-        conn.close()
         client.iteration += 1
         return
 
