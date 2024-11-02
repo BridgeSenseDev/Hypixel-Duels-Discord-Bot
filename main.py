@@ -129,6 +129,15 @@ async def update_members():
         member = await guild.fetch_member(member_id)
     except discord.NotFound:
         print(f"Discord member ID {member_id} not found, removing from DB")
+
+        conn = sqlite3.connect("members.db")
+        cur = conn.cursor()
+        cur.execute("DELETE FROM members WHERE discord = ?", (member_id,))
+        conn.commit()
+        conn.close()
+
+        client.iteration += 1
+        return
     except discord.DiscordException as e:
         print(f"Error fetching member {member_id}, skipping: {e}")
 
