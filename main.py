@@ -20,7 +20,7 @@ def get_duel_role(wins):
     return None
 
 
-async def hypixel_request(url):
+async def hypixel_request(url, quick_cache=True):
     conn = sqlite3.connect("members.db")
     cur = conn.cursor()
     cur.execute("SELECT response, time FROM cache WHERE url = ?", (url,))
@@ -28,6 +28,8 @@ async def hypixel_request(url):
 
     if members:
         if time.time() - members[1] < 3600:
+            return json.loads(members[0])
+        elif quick_cache and time.time() - members[1] < 60:
             return json.loads(members[0])
 
         response = requests.get(url, headers={"API-Key": config["hypixel_api_key"]})
@@ -200,7 +202,9 @@ async def verify(interaction: discord.Interaction, name: str):
             "data"
         ]["player"]["raw_id"]
         data = (
-            await hypixel_request(f"https://api.hypixel.net/player?uuid={uuid}")
+            await hypixel_request(
+                f"https://api.hypixel.net/player?uuid={uuid}", quick_cache=True
+            )
         ).get("player", {})
     except KeyError:
         embed = discord.Embed(
