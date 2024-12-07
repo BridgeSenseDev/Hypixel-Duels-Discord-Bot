@@ -230,7 +230,7 @@ async def verify(interaction: discord.Interaction, name: str):
         await interaction.edit_original_response(embed=embed)
         return
 
-    if discord_tag != interaction.user.name:
+    if discord_tag.lower() != interaction.user.name.lower():
         embed = discord.Embed(
             title="Verification Unsuccessful",
             description=f"{config['emojis']['cross']} **{ign}'s** hypixel discord tag `{discord_tag}` does not match `{interaction.user.name}`",
